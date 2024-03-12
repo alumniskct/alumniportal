@@ -441,7 +441,7 @@ function RegistrationPageStudent() {
                   </section>
                 </form>
               ) : (
-                <form>
+                <form onSubmit={handleSubmit} onKeyDown={checkKeyDown}>
                   <section>
                     <div className={styles.form_input_container}>
                       <select
