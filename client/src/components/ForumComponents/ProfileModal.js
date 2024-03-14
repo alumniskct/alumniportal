@@ -462,13 +462,15 @@ function ProfileModal({ isOpen, handleClose, userId }) {
                       <p>Save</p>
                     </div>
                   )}
-                  <div
-                    className={styles.profile_controls}
-                    onClick={handleDeleteAccount}
-                  >
-                    <BsTrash />
-                    <p>Delete Account</p>
-                  </div>
+                  {!user?.isAdmin && (
+                    <div
+                      className={styles.profile_controls}
+                      onClick={handleDeleteAccount}
+                    >
+                      <BsTrash />
+                      <p>Delete Account</p>
+                    </div>
+                  )}
                   {!editProfile &&
                     !user?.alumni &&
                     !user.isAdmin &&
