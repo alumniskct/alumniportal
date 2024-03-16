@@ -415,7 +415,7 @@ export const generateAlumniPDF = asyncHandler(async (req, res) => {
 
         const pdf = await page.pdf({
           printBackground: true,
-          height: "634px",
+          height: "600px",
           preferCSSPageSize: false,
           margin: {
             top: 0,
