@@ -29,7 +29,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-// app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public")));
 
 // app.set("view engine", "ejs");
 // app.set("views", path.join(__dirname, "/templates"));
@@ -57,14 +57,11 @@ if (process.env.NODE_ENV === "DEVELOPMENT") {
   });
 } else {
   console.log("Production mode".green);
-  app.get("/", (req, res) => {
-    res.send("ALUMNI PORTAL API RUNNING");
+  const root = path.join(__dirname, "client", "build");
+  app.use(express.static(root));
+  app.get("*", (req, res) => {
+    res.sendFile("index.html", { root });
   });
-  // const root = path.join(__dirname, "client", "build");
-  // app.use(express.static(root));
-  // app.get("*", (req, res) => {
-  //   res.sendFile("index.html", { root });
-  // });
 }
 
 app.use(notFound);
